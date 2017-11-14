@@ -1,5 +1,7 @@
 package Gazerine;
 
+use Gazerine::Person;
+
 use Scalar::Util    qw< blessed >;
 use Module::Runtime qw< use_module >;
 
