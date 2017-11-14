@@ -30,7 +30,7 @@ sub create_entity {
     $storage{ $self->name }{$class}{$_id_} = { %$data, _id_ => $_id_ };
 
     # return a new object
-    return $class->new( %$data, _id_ => $_id_ );
+    return $class->new( %$data, _id_ => $_id_, gazerine => $self->gazerine );
 }
 
 1;

@@ -12,4 +12,8 @@ has _id_ => (
     is => 'ro',
 );
 
+has gazerine => (
+    is => 'ro',
+);
+
 1;

@@ -11,6 +11,7 @@ my $p1 = $gaz->create_entity( 'Gazerine::Person', { name => 'Barbapapa' } );
 isa_ok $p1, 'Gazerine::Person';
 is $p1->name, 'Barbapapa', 'person1 is named Barbapapa';
 ok eval { $p1->_id_ }, 'person has an _id_';
+is $p1->gazerine, $gaz, 'person points back to its creator';
 
 my $p2 = Gazerine::Person->new( name => 'Barbapapa' );
 is $p2->_id_, undef, 'newly instantiated person has no id';

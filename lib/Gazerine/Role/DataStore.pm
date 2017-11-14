@@ -7,4 +7,9 @@ requires
   'create_entity',
   ;
 
+has gazerine => (
+    is       => 'ro',
+    required => 1,
+);
+
 1;
