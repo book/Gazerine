@@ -22,4 +22,10 @@ ok eval { $p2->_id_ }, 'person has an _id_';
 
 isnt $p1->_id_, $p2->_id_, 'different persons have different ids';
 
+# gatherings
+my $g1 = $gaz->create_entity( 'Gazerine::Gathering', { name => 'My Conf' } );
+isa_ok $g1, 'Gazerine::Gathering';
+is $g1->name, 'My Conf', 'gathering1 is named My Conf';
+ok eval { $g1->_id_ }, 'gathering has an _id_';
+
 done_testing;

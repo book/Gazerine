@@ -1,6 +1,7 @@
 package Gazerine;
 
 use Gazerine::Person;
+use Gazerine::Gathering;
 
 use Scalar::Util    qw< blessed >;
 use Module::Runtime qw< use_module >;
