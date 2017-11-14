@@ -1,6 +1,7 @@
 package Gazerine::DataStore::Memory;
 
 use List::Util qw< max >;
+use Scalar::Util qw< blessed >;
 
 use Moo;
 use namespace::clean;
@@ -21,7 +22,8 @@ sub _next_id_ {
 }
 
 sub create_entity {
-    my ( $self, $class, $data ) = @_;
+    my $self = shift;
+    my ( $class, $data ) = blessed $_[0] ? ( ref $_[0], $_[0]->as_hashref ) : @_;
 
     # compute the new id and store the data
     my $_id_ = $self->_next_id_($class);
