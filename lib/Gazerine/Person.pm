@@ -5,6 +5,8 @@ use namespace::clean;
 
 with 'Gazerine::Role::Entity';
 
+sub kind { 'person' }
+
 has name => (
     is       => 'ro',
     required => 1,

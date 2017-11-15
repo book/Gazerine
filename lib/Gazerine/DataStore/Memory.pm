@@ -23,11 +23,12 @@ sub _next_id_ {
 
 sub create_entity {
     my $self = shift;
-    my ( $class, $data ) = blessed $_[0] ? ( ref $_[0], $_[0]->as_hashref ) : @_;
+    my ( $kind, $data ) = blessed $_[0] ? ( $_[0]->kind, $_[0]->as_hashref ) : @_;
+    my $class = "Gazerine::\u$kind";
 
     # compute the new id and store the data
-    my $_id_ = $self->_next_id_($class);
-    $storage{ $self->name }{$class}{$_id_} = { %$data, _id_ => $_id_ };
+    my $_id_ = $self->_next_id_($kind);
+    $storage{ $self->name }{$kind}{$_id_} = { %$data, _id_ => $_id_ };
 
     # return a new object
     return $class->new( %$data, _id_ => $_id_, gazerine => $self->gazerine );
