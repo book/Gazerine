@@ -33,4 +33,8 @@ is $g1->kind, 'gathering', 'gathering1 is a gathering';
 is $g1->name, 'My Conf', 'gathering1 is named My Conf';
 ok eval { $g1->_id_ }, 'gathering has an _id_';
 
+
+# registration to a gathering
+is $g1->registered_persons, 0, "No one's registered yet";
+
 done_testing;

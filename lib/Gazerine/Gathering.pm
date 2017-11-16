@@ -16,4 +16,6 @@ sub as_hashref {
     return { name => $_[0]->name };
 }
 
+sub registered_persons { 0 }
+
 1;
