@@ -11,7 +11,7 @@ with 'Gazerine::Role::DataStore';
 my %storage;
 my $name = 'memory1';
 
-has 'name' => (
+has name => (
     is       => 'ro',
     default  => sub { $name++ },
     required => 1,
