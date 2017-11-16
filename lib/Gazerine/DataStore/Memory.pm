@@ -17,8 +17,14 @@ has 'name' => (
     required => 1,
 );
 
+has store => (
+    is       => 'ro',
+    default  => sub { $storage{ $_[0]->name } //= {} },
+    init_arg => undef,
+);
+
 sub _next_id_ {
-    return 1 + ( max( keys %{ $storage{ $_[0]->name }{ $_[1] } } ) // 0 );
+    return 1 + ( max( keys %{ $_[0]->store->{ $_[1] } } ) // 0 );
 }
 
 sub create_entity {
@@ -28,7 +34,7 @@ sub create_entity {
 
     # compute the new id and store the data
     my $_id_ = $self->_next_id_($kind);
-    $storage{ $self->name }{$kind}{$_id_} = { %$data, _id_ => $_id_ };
+    $self->store->{$kind}{$_id_} = { %$data, _id_ => $_id_ };
 
     # return a new object
     return $class->new( %$data, _id_ => $_id_, gazerine => $self->gazerine );
