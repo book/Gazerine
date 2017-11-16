@@ -17,7 +17,12 @@ has datastore => (
     },
     default  => sub { use_module( 'Gazerine::DataStore::Memory' )->new( gazerine => shift ) },
     required => 1,
-    handles  => [ qw< create_entity > ],
+    handles  => [
+        qw<
+          create_entity
+          link
+          >
+    ],
 );
 
 1;

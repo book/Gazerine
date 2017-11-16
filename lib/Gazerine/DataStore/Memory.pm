@@ -1,7 +1,7 @@
 package Gazerine::DataStore::Memory;
 
-use List::Util qw< max >;
 use Scalar::Util qw< blessed >;
+use List::Util   qw< max uniqnum >;
 
 use Moo;
 use namespace::clean;
@@ -38,6 +38,14 @@ sub create_entity {
 
     # return a new object
     return $class->new( %$data, _id_ => $_id_, gazerine => $self->gazerine );
+}
+
+sub link {
+    my ( $self, $from, $to ) = @_;
+    my $target =
+      $self->store->{ $from->kind . '|' . $to->kind }{ $from->_id_ } //= [];
+    @$target = uniqnum @$target, $to->_id_;
+    return scalar @$target;
 }
 
 1;
