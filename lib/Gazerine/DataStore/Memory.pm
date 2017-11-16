@@ -48,4 +48,11 @@ sub link {
     return scalar @$target;
 }
 
+sub linked_to {
+    my ( $self, $from, $kind ) = @_;
+    return
+      scalar @{ $self->store->{ $from->kind . '|' . $kind }{ $from->_id_ }
+          // [] };
+}
+
 1;

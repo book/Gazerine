@@ -6,6 +6,7 @@ use namespace::clean;
 requires
   'create_entity',
   'link',
+  'linked_to',
   ;
 
 has gazerine => (

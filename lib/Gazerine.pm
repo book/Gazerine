@@ -20,7 +20,7 @@ has datastore => (
     handles  => [
         qw<
           create_entity
-          link
+          link linked_to
           >
     ],
 );
