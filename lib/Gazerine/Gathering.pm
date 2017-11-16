@@ -16,6 +16,11 @@ sub as_hashref {
     return { name => $_[0]->name };
 }
 
+sub register {
+    my ( $self, @persons ) = @_;
+    $self->gazerine->link( $self, $_ ) for @persons;
+}
+
 sub registered_persons { 0 }
 
 1;
