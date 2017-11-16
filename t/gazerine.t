@@ -36,5 +36,7 @@ ok eval { $g1->_id_ }, 'gathering has an _id_';
 
 # registration to a gathering
 is $g1->registered_persons, 0, "No one's registered yet";
+$g1->register( $p1 );
+is $g1->registered_persons, 1, "One person did register";
 
 done_testing;

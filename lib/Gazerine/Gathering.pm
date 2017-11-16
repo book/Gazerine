@@ -21,6 +21,9 @@ sub register {
     $self->gazerine->link( $self, $_ ) for @persons;
 }
 
-sub registered_persons { 0 }
+sub registered_persons {
+    my ($self) = @_;
+    return $self->gazerine->linked_to( $self => 'person' );
+}
 
 1;
